@@ -1,0 +1,19 @@
+1.VPC Create
+2.Subnets-3
+3.internet gateway .....attach to vpc
+4.route table create .....edit subnet associations(save associations)  go to edit routind ...add route
+5.go to VPc enable DNS settings
+6. create S3...then upload objects ...make public using ACL...allow ACL, off public Access and make public
+7.create cluster....node type(dc2.large)....create subnet group
+8.associate IAM roles...
+
+
+psql -h redshift-cluster-1.c49ywsulhpjk.ap-south-1.redshift.amazonaws.com -p 5439 -U admin -d dev -W
+
+
+
+copy website_traffic from 's3://mouni12345/trafficData (1).csv' iam_role 'arn:aws:iam::259026901926:role/mounika_role' delimiter','region 'ap-south-1';
+
+COPY dev.public.website_traffic FROM 's3://mouni12345/trafficData (1).csv' IAM_ROLE 'arn:aws:iam::259026901926:role/mounika_role' FORMAT AS CSV DELIMITER ',' QUOTE '"' IGNOREHEADER 1 REGION AS 'ap-south-1'
+
+we use with for multiple times to use that table.
